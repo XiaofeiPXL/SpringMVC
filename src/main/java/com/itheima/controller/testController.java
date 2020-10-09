@@ -30,9 +30,23 @@ public class testController {
     }
 
     //符合Restful的get请求测试
-    @RequestMapping(value = "/testRestGet/{id}")
+    @RequestMapping(value = "/testRestGet/{id}",method = RequestMethod.GET)
     public String restfulGet(@PathVariable Integer id){
         System.out.println("id: "+id);
         return "hello";
+    }
+
+    //符合Restful的put请求测试
+    @RequestMapping(value = "/testRestPut",method = RequestMethod.PUT)
+    public String restfulPut(){
+        System.out.println("PUT方法测试成功");
+        return "put";
+    }
+
+    //符合Restful的put请求测试
+    @RequestMapping(value = "/testRestDelete/{id}",method = RequestMethod.DELETE)
+    public String restfulDelete(@PathVariable String id){
+        System.out.println("Delete方法测试成功,获取的参数值: "+id);
+        return "delete";
     }
 }
