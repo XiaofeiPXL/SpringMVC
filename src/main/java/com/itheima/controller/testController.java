@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @program: SpringMVC
@@ -48,5 +49,27 @@ public class testController {
     public String restfulDelete(@PathVariable String id){
         System.out.println("Delete方法测试成功,获取的参数值: "+id);
         return "delete";
+    }
+
+    @RequestMapping(value = "/testAjax_DELETE/{id}",method = RequestMethod.DELETE)
+    public void ajaxDELETE(@PathVariable Integer id){
+        System.out.println("请求删除的ID值为: "+"["+id+"]");
+    }
+
+    /**
+     * springMVC获取客户端传递的数据的方式:
+     * (1) 在处理请求的方法中,加入相对应的形参,保证形参参数名和传递的数据的参数名保持一致,就可以自动赋值RequestParam(value=xxx,required=true||false)
+     * (2) value:当不满足映射关系时使用,指定value属性,指定映射关系
+     * @param name 测试变量
+     * @param country 测试变量
+     * @param age 测试变量
+     * @return 对应的jsp界面
+     */
+    @RequestMapping(value = "/getParameter",method = RequestMethod.POST)
+    public String testGetParameter(@RequestParam(value = "username") String name, String country, @RequestParam(value = "age",defaultValue = "18")String age){
+        System.out.println("username: "+name);
+        System.out.println("country: "+country);
+        System.out.println("age: "+age);
+        return "success";
     }
 }
