@@ -1,4 +1,6 @@
-package com.itheima.bean;
+package com.itheima.entity;
+
+import java.util.Date;
 
 /**
  * @program: SpringMVC
@@ -11,19 +13,19 @@ package com.itheima.bean;
 public class User {
     private Integer id;
     private String username;
-    private String password;
-    private Integer age;
+    private Date birthday;
+    private String sex;
+    private String address;
 
-    private Address address;
 
     public User() {
     }
 
-    public User(Integer id, String username, String password, Integer age, Address address) {
+    public User(Integer id, String username, Date birthday, String sex, String address) {
         this.id = id;
         this.username = username;
-        this.password = password;
-        this.age = age;
+        this.birthday = birthday;
+        this.sex = sex;
         this.address = address;
     }
 
@@ -43,27 +45,27 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getSex() {
+        return sex;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -72,9 +74,9 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", age=" + age +
-                ", address=" + address +
+                ", birthday=" + birthday +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

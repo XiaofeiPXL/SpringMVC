@@ -1,4 +1,4 @@
-package com.itheima.bean;
+package com.itheima.entity;
 
 /**
  * @program: SpringMVC

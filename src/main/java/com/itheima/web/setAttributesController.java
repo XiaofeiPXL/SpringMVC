@@ -1,6 +1,6 @@
-package com.itheima.controller;
+package com.itheima.web;
 
-import com.itheima.bean.User;
+import com.itheima.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
