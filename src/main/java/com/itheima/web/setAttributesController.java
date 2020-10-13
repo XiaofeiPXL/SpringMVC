@@ -1,12 +1,16 @@
 package com.itheima.web;
 
+import com.itheima.dao.UserDao;
 import com.itheima.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Map;
 
 
@@ -22,6 +26,9 @@ import java.util.Map;
 
 @Controller
 public class setAttributesController {
+    @Autowired
+    private UserDao userDao;
+
     @RequestMapping("/setAttributesOne")
     private String setParameterMethodOne(User user){
         System.out.println(user.getAddress());
@@ -51,5 +58,15 @@ public class setAttributesController {
         //和上面一种方法一样
         modelMap.put("username",user.getUsername());
         return "success";
+    }
+
+    @RequestMapping("/testJson")
+    @ResponseBody
+    private List<User> testJson(){
+        List<User> userList = userDao.findAll();
+        for(User user:userList){
+            System.out.println(user);
+        }
+        return userList;
     }
 }

@@ -16,6 +16,22 @@
                     },
                     dataType: "json"
                 })
+            });
+            <!--url如果前面加上斜杠代表是服务器的根目录,而不是项目的根目录,不加斜杠代表的是当前页面的目录,而不是项目的根目录
+                如果返回值是json对象,变量i代表的是index而不是json数组中的每一个对象,需要用data[i]来获取每一个json对象
+            -->
+            $("#jsonBTN").click(function () {
+                $.ajax({
+                    url:"testJson",
+                    type: "GET",
+                    dataType: "json",
+                    success:function (data) {
+                        for(let i in data){
+                            let user = data[i];
+                            alert(user.id+" "+user.username+" "+user.address);
+                        }
+                    }
+                })
             })
         })
     </script>
@@ -43,5 +59,7 @@
     city:<input type="text" name="address.city"><br/>
     <input type="submit" value="测试提交"><br/>
 </form>
+
+<input id="jsonBTN" type="button" value="testJson" name="testJson">
 </body>
 </html>
